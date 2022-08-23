@@ -1,8 +1,10 @@
-import { getDelegator } from './utils';
+import { runCronjob } from './cronjob';
+import { runServer } from './server';
 
 async function main() {
   console.time('script_run_time');
-  return await getDelegator('0x501ACe67a1cba9ca9793c300B3AEB29394ae8C7b');
+  await runCronjob();
+  await runServer();
 }
 
 main()

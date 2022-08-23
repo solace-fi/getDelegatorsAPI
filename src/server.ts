@@ -7,9 +7,9 @@ import { logger } from './utils';
 const app = express();
 const port = process.env.PORT || 18123;
 
-main();
+// runServer();
 
-async function main() {
+export async function runServer() {
   try {
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
