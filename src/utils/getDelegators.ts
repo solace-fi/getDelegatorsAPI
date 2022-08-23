@@ -2,7 +2,7 @@ import { DELEGATE_MAP_CACHE_PATH } from '../constants';
 import { logger } from '.';
 import * as fs from 'fs';
 
-export async function getDelegator(address: string): Promise<Array<string>> {
+export async function getDelegators(address: string): Promise<Array<string>> {
   let delegators: Array<string> = []; // eslint-disable-line prefer-const
   let delegateMap: { [voter: string]: string } = Object.create(null);
 

@@ -1,6 +1,6 @@
 import express from 'express';
 import { ethers } from 'ethers';
-import { getDelegator } from './utils';
+import { getDelegators } from './utils';
 const { isAddress } = ethers.utils;
 import { logger } from './utils';
 
@@ -21,24 +21,24 @@ export async function runServer() {
 }
 
 // Endpoint for getDelegator function - /getDelegator?address=...
-app.get('/getDelegator', async (req, res) => {
+app.get('/getDelegators', async (req, res) => {
   try {
     const address = req.query.address;
 
     if (!address) {
-      res.send('require /getDelegator?address=... input');
+      res.send('require /getDelegators?address=... input');
     } else {
       if (!isAddress(address.toString())) {
         res.send('not a valid Ethereum address');
       } else {
-        const delegators = await getDelegator(address.toString());
-        console.log(`getDelegator query for ${address}: ${delegators}`);
+        const delegators = await getDelegators(address.toString());
+        console.log(`getDelegators query for ${address}: ${delegators}`);
         res.send(delegators);
       }
     }
   } catch (e) {
-    logger.error(`\n${new Date()}: GET request error for /getDelegator with query object ${req.query}`);
+    logger.error(`\n${new Date()}: GET request error for /getDelegators with query object ${req.query}`);
     logger.error(e);
-    res.send(`GET request error to /getDelegator endpoint for ${req.query}`);
+    res.send(`GET request error to /getDelegators endpoint for ${req.query}`);
   }
 });
