@@ -8,8 +8,6 @@ import { logger } from './utils';
 const app = express();
 const port = process.env.PORT || 18123;
 
-// runServer();
-
 export async function runServer() {
   try {
     app.use(cors());
@@ -35,6 +33,9 @@ app.get('/getDelegators', async (req, res) => {
       } else {
         const delegators = await getDelegators(address.toString());
         console.log(`getDelegators query for ${address}: ${delegators}`);
+        res.append('Access-Control-Allow-Origin', ['*']);
+        res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.append('Access-Control-Allow-Headers', 'Content-Type');
         res.send(delegators);
       }
     }
