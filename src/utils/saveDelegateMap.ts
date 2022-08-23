@@ -7,7 +7,8 @@ export async function saveDelegateMap() {
     const delegateMap = await getDelegateMap();
     logger.info(`Successfully obtained delegate map with ${delegateMap.size} elements`);
     await fs.writeFileSync(DELEGATE_MAP_CACHE_PATH, JSON.stringify(strMapToObj(delegateMap)));
-  } catch {
+  } catch (e) {
+    logger.error(e);
     logger.error('Failed to get delegateMap');
   }
 }
