@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { ethers } from 'ethers';
 import { getDelegators } from './utils';
 const { isAddress } = ethers.utils;
@@ -11,6 +12,7 @@ const port = process.env.PORT || 18123;
 
 export async function runServer() {
   try {
+    app.use(cors());
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
