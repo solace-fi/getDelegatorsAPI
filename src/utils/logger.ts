@@ -3,7 +3,7 @@ import * as winston from 'winston'; // Logging
 const myCustomLevels = {
   levels: {
     error: 0,
-    info: 1,
+    info: 1
   },
   colors: {
     error: 'red',

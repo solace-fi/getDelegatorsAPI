@@ -1,2 +1,2 @@
-#!/usr/bin/bash
+#!/bin/bash
 yarn build && node dist/server &> server.log &
