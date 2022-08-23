@@ -17,7 +17,7 @@ winston.addColors(myCustomLevels.colors);
 export const logger = winston.createLogger({
   levels: myCustomLevels.levels,
   // Simple line-by-line output
-  format: winston.format.combine(winston.format.simple()),
+  format: winston.format.combine(winston.format.timestamp(), winston.format.simple()),
   transports: [
     // Print to console
     new winston.transports.Console(),
